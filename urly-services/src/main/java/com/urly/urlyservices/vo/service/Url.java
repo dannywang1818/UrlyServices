@@ -1,4 +1,4 @@
-package com.urly.urlyservices.vo;
+package com.urly.urlyservices.vo.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

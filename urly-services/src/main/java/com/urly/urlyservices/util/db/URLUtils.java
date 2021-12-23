@@ -1,8 +1,8 @@
-package com.urly.urlyservices.util;
+package com.urly.urlyservices.util.db;
 
 import java.net.URL;
 
-public class UrlUtils {
+public class URLUtils {
     public static boolean isValidLongUrl(String longUrl) {
         if(longUrl.startsWith("http://localhost")) {
             return false;
