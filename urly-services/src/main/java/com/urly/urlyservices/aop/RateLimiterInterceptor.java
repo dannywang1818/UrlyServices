@@ -86,7 +86,11 @@ public class RateLimiterInterceptor {
         );
 
         return switch (limitType) {
+<<<<<<< HEAD
             case IP -> key + "_" + LimitType.IP + ":" + IPUtils.getClientIpAddress(request);
+=======
+            case IP -> key + "_" + LimitType.IP + ":" + IpUtils.getClientIpAddress(request);
+>>>>>>> 9dc5057 (Added Rate Limiter)
             case CUSTOMER -> key + "_" + LimitType.CUSTOMER + ":" + rateLimitAnnotation.key();
         };
     }
