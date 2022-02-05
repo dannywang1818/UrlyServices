@@ -1,6 +1,7 @@
 package com.urly.urlyservices.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
@@ -17,7 +18,8 @@ public class SequenceIdService {
     private static final String GLOBAL_SEQUENCE_ID = "Global_Sequence_ID";
 
     @Autowired
-    private RedisScript<Long> redisScript;
+    @Qualifier("counterScript")
+    private RedisScript<Long> redisCounterScript;
 
     private RedisAtomicLong entityIdCounter;
 
@@ -40,7 +42,7 @@ public class SequenceIdService {
     }
 
     public long getNextSequenceIdByLua() {
-        long sequenceId = this.sequenceIdRedisTemplate.execute(redisScript, List.of(GLOBAL_SEQUENCE_ID));
+        long sequenceId = this.sequenceIdRedisTemplate.execute(redisCounterScript, List.of(GLOBAL_SEQUENCE_ID));
         sequenceIdRedisTemplate.getConnectionFactory().getConnection().bgSave();
         return sequenceId;
     }
