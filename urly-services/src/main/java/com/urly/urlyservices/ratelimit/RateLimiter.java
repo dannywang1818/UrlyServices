@@ -1,6 +1,6 @@
 package com.urly.urlyservices.ratelimit;
 
-import com.urly.urlyservices.vo.RateLimiterInfo;
+import com.urly.urlyservices.vo.ratelimiter.RateLimiterInfo;
 
 public interface RateLimiter {
 

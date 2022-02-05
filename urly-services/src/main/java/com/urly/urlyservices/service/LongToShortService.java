@@ -5,8 +5,8 @@ import com.urly.urlyservices.db.entity.LongToShort;
 import com.urly.urlyservices.db.repository.LongToSequenceIdRepository;
 import com.urly.urlyservices.db.repository.LongToShortRepository;
 import com.urly.urlyservices.tinyurl.TinyUrlGenerator;
-import com.urly.urlyservices.util.UrlUtils;
-import com.urly.urlyservices.vo.Url;
+import com.urly.urlyservices.util.db.URLUtils;
+import com.urly.urlyservices.vo.service.Url;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +42,7 @@ public class LongToShortService {
 
     public Url longToShort(String longUrl) {
         // validation
-        if(!UrlUtils.isValidLongUrl(longUrl)) {
+        if(!URLUtils.isValidLongUrl(longUrl)) {
             return null;
         }
 
@@ -65,6 +65,9 @@ public class LongToShortService {
         // update redis & db
         redisService.set(longUrl, nextGlobalSequenceId);
         LongToShort longToShort = persistLongToShort(longUrl, shortUrl.getUrl(), nextGlobalSequenceId);
+
+        // send kafka asyn
+        //...
 
         return new Url(shortUrlPrefix + longToShort.getShortUrl());
     }

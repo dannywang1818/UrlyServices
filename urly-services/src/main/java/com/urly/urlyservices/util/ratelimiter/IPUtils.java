@@ -1,8 +1,8 @@
-package com.urly.urlyservices.util;
+package com.urly.urlyservices.util.ratelimiter;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class IpUtils {
+public class IPUtils {
     private static final String[] VALID_IP_HEADER_CANDIDATES = {
             "X-Forwarded-For",
             "Proxy-Client-IP",

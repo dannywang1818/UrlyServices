@@ -1,6 +1,6 @@
 package com.urly.urlyservices.ratelimit;
 
-import com.urly.urlyservices.vo.RateLimiterInfo;
+import com.urly.urlyservices.vo.ratelimiter.RateLimiterInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
