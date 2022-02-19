@@ -10,8 +10,14 @@ import org.springframework.data.redis.core.script.RedisScript;
 public class RedisScriptConfig {
 
     @Bean
-    public RedisScript<Long> script() {
+    public RedisScript<Long> counterScript() {
         Resource scriptSource = new ClassPathResource("redisCounter.lua");
+        return RedisScript.of(scriptSource, Long.class);
+    }
+
+    @Bean
+    public RedisScript<Long> limiterScript() {
+        Resource scriptSource = new ClassPathResource("redisLimiterCounter.lua");
         return RedisScript.of(scriptSource, Long.class);
     }
 }

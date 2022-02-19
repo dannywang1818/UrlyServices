@@ -3,11 +3,10 @@ package com.urly.urlyservices.aop;
 import com.urly.urlyservices.annotation.RateLimit;
 import com.urly.urlyservices.enums.LimitMethod;
 import com.urly.urlyservices.enums.LimitType;
-import com.urly.urlyservices.ratelimit.FixWindowRateLimiter;
 import com.urly.urlyservices.ratelimit.RateLimitProcessor;
 import com.urly.urlyservices.ratelimit.RateLimiter;
-import com.urly.urlyservices.util.IpUtils;
-import com.urly.urlyservices.vo.RateLimiterInfo;
+import com.urly.urlyservices.util.ratelimiter.IPUtils;
+import com.urly.urlyservices.vo.ratelimiter.RateLimiterInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -87,7 +86,8 @@ public class RateLimiterInterceptor {
         );
 
         return switch (limitType) {
-            case IP -> key + "_" + LimitType.IP + ":" + IpUtils.getClientIpAddress(request);
+            case IP -> key + "_" + LimitType.IP + ":" + IPUtils.getClientIpAddress(request);
+
             case CUSTOMER -> key + "_" + LimitType.CUSTOMER + ":" + rateLimitAnnotation.key();
         };
     }
