@@ -1,4 +1,4 @@
-package com.urly.urlyservices.vo;
+package com.urly.urlyservices.vo.ratelimiter;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

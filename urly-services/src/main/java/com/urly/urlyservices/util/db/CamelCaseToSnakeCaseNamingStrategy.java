@@ -1,4 +1,4 @@
-package com.urly.urlyservices.util;
+package com.urly.urlyservices.util.db;
 
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategy;

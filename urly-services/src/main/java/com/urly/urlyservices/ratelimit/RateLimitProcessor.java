@@ -5,7 +5,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.util.concurrent.RateLimiter;
 import com.urly.urlyservices.config.LocalCacheProperties;
-import com.urly.urlyservices.vo.RateLimiterInfo;
+import com.urly.urlyservices.vo.ratelimiter.RateLimiterInfo;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
